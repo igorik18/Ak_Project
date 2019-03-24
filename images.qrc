@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>bg5.jpg</file>
+        <file>whitey.png</file>
+        <file>artsfon.com-156794.jpg</file>
+        <file>P2_Tech_Spec_Background.jpg</file>
+        <file>99681_bg.jpg</file>
+        <file>background-1024x427.png</file>
+        <file>gold.jpg</file>
+        <file>uBZixE.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>whitey.png</file>
+    </qresource>
+</RCC>
