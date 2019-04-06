@@ -25,10 +25,6 @@ private slots:
 
     void on_WriteRadioButton_clicked();
 
-    void on_radioButton_clicked();
-
-    void on_radioButton_2_clicked();
-
     void on_NORRadioButton_clicked();
 
     void on_NANDRadioButton_clicked();
