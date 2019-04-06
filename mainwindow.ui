@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1196</width>
-    <height>685</height>
+    <width>1020</width>
+    <height>545</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -115,23 +115,41 @@ background: url(:/new/prefix1/P2_Tech_Spec_Background.jpg);</string>
            <item row="0" column="0">
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <widget class="QRadioButton" name="ReadRadioButton">
+              <widget class="QGroupBox" name="groupBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">color: white;</string>
                </property>
-               <property name="text">
-                <string>Чтение</string>
+               <property name="title">
+                <string>ВЫБОР ДЕЙСТВИЯ</string>
                </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="WriteRadioButton">
-               <property name="styleSheet">
-                <string notr="true">color: white;</string>
-               </property>
-               <property name="text">
-                <string>Запись</string>
-               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_10">
+                <item>
+                 <widget class="QRadioButton" name="ReadRadioButton">
+                  <property name="styleSheet">
+                   <string notr="true">color: white;</string>
+                  </property>
+                  <property name="text">
+                   <string>Чтение</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="WriteRadioButton">
+                  <property name="styleSheet">
+                   <string notr="true">color: white;</string>
+                  </property>
+                  <property name="text">
+                   <string>Запись</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
@@ -184,7 +202,7 @@ QPushButton:pressed
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="ReadPage">
                 <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -279,6 +297,64 @@ QPushButton:pressed
              </item>
             </layout>
            </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>128</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: white;</string>
+             </property>
+             <property name="title">
+              <string>ВЫБОР ТИПА ПАМЯТИ</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QRadioButton" name="NANDRadioButton">
+                <property name="styleSheet">
+                 <string notr="true">color: white;</string>
+                </property>
+                <property name="text">
+                 <string>NAND</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="NORRadioButton">
+                <property name="styleSheet">
+                 <string notr="true">color: white;</string>
+                </property>
+                <property name="text">
+                 <string>NOR</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QLabel" name="CellDepthInfoLabel">
+                  <property name="styleSheet">
+                   <string notr="true">color: white;</string>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Глубина ячейки&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                  <property name="indent">
+                   <number>25</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="CellDepthLineEdit"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -297,6 +373,17 @@ background-size: cover ;</string>
           <property name="title">
            <string/>
           </property>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <widget class="QStackedWidget" name="NOR_NAND_StackedWidget">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="NOR"/>
+             <widget class="QWidget" name="NAND"/>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -340,34 +427,6 @@ background-size: cover ;</string>
            </item>
           </layout>
          </item>
-         <item row="0" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout_8">
-           <item>
-            <widget class="QLabel" name="CellDepthInfoLabel">
-             <property name="font">
-              <font>
-               <family>Times New Roman</family>
-               <pointsize>20</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: white;</string>
-             </property>
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Глубина ячейки&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="indent">
-              <number>25</number>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="CellDepthLineEdit"/>
-           </item>
-          </layout>
-         </item>
          <item row="0" column="2">
           <layout class="QVBoxLayout" name="verticalLayout_9">
            <item>
@@ -396,6 +455,13 @@ background-size: cover ;</string>
          </item>
          <item row="1" column="0">
           <widget class="QGroupBox" name="NoNeedGroupBox1">
+           <property name="title">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QGroupBox" name="NoNeedGroupBox2">
            <property name="title">
             <string/>
            </property>
@@ -644,13 +710,6 @@ QPushButton:pressed
            </layout>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="QGroupBox" name="NoNeedGroupBox2">
-           <property name="title">
-            <string/>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
       </layout>
@@ -663,7 +722,7 @@ QPushButton:pressed
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1196</width>
+     <width>1020</width>
      <height>21</height>
     </rect>
    </property>

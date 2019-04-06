@@ -20,6 +20,19 @@ public:
 
 
 
+private slots:
+    void on_ReadRadioButton_clicked();
+
+    void on_WriteRadioButton_clicked();
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_NORRadioButton_clicked();
+
+    void on_NANDRadioButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
