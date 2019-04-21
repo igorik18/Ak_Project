@@ -1,10 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <cstdio>
-#include <iostream>
-using namespace std;
+#include "nandgraphichandler.h"
+#include "norgraphichandler.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,8 +27,19 @@ private slots:
 
     void on_NANDRadioButton_clicked();
 
+
+
 private:
     Ui::MainWindow *ui;
+    NorGraphicHandler *NorGH;
+    NandGraphicHandler *NandGH;
+    QTimer              *timer;
+
+private slots:
+    void slotAlarmTimer();
+    void on_WordLinehorizontalSlider_valueChanged(int value);
+    void on_BitLinehorizontalSlider_valueChanged(int value);
+    void on_CellDepthhorizontalSlider_valueChanged(int value);
 };
 
 #endif // MAINWINDOW_H

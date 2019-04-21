@@ -24,12 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mygraphicsview.cpp \
+    norgraphichandler.cpp \
+    nandgraphichandler.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    mygraphicsview.h \
+    norgraphichandler.h \
+    nandgraphichandler.h
 
 FORMS += \
         mainwindow.ui
