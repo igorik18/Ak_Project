@@ -40,6 +40,9 @@ private slots:
     void on_WordLinehorizontalSlider_valueChanged(int value);
     void on_BitLinehorizontalSlider_valueChanged(int value);
     void on_CellDepthhorizontalSlider_valueChanged(int value);
+    void on_BitWordNumber_textEdited(const QString &arg1);
+    void on_StartButton_clicked();
+    void on_ResetButton_clicked();
 };
 
 #endif // MAINWINDOW_H

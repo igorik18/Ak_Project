@@ -11,6 +11,9 @@ public:
     NorGraphicHandler(pair <size_t, size_t> counts = make_pair(1, 1));
     void SetWordLine(size_t count);
     void SetBitLine(size_t count);
+    bool RecordInfo(string word);
+    string ReadInfo(size_t number);
+    void Clear();
     MyGraphicsView *MGV() const;
 };
 

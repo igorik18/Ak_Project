@@ -40,11 +40,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_ReadRadioButton_clicked()
 {
+    ui->BitWordNumber->clear();
     ui->BitWordNumberInfoLabel->setText("Номер слова");
 }
 
 void MainWindow::on_WriteRadioButton_clicked()
 {
+    ui->BitWordNumber->clear();
     ui->BitWordNumberInfoLabel->setText("Битовое слово");
 }
 
@@ -89,6 +91,9 @@ void MainWindow::on_WordLinehorizontalSlider_valueChanged(int value)
 
 void MainWindow::on_BitLinehorizontalSlider_valueChanged(int value)
 {
+        QString str(ui->BitWordNumber->text());
+        str.chop(ui->BitWordNumber->text().size() - value);
+        ui->BitWordNumber->setText(str);
         ui->BitLineLabel->setText(QString().setNum(value));
         NorGH->SetBitLine(value);
         NandGH->SetBitLine(value);
@@ -98,4 +103,81 @@ void MainWindow::on_CellDepthhorizontalSlider_valueChanged(int value)
 {
     ui->CellDepthLabel->setText(QString().setNum(value));
     NandGH->SetCellDepth(value);
+}
+
+void MainWindow::on_BitWordNumber_textEdited(const QString &arg1)
+{
+    bool ok;
+    int value = arg1.toInt(&ok, 10);
+    if (!ok)
+    {
+        QString str(arg1);
+        str.chop(1);
+        ui->BitWordNumber->setText(str);
+       // ui->BitWordNumber->setText(QString());
+    }
+    if (ui->ReadRadioButton->isChecked() && ok)
+    {
+        if (value < 1) ui->BitWordNumber->setText(QString().setNum(1));
+        if (ui->NANDRadioButton->isChecked())
+        {
+            if (value > NandGH->MGV()->getCounts().second) ui->BitWordNumber->setText(QString().setNum(NandGH->MGV()->getCounts().second));
+        }
+        else
+        {
+            if (value > NorGH->MGV()->getCounts().second) ui->BitWordNumber->setText(QString().setNum(NorGH->MGV()->getCounts().second));
+        }
+    }
+    else if (ui->WriteRadioButton->isChecked() && ok)
+    {
+        size_t counts;
+        if (ui->NANDRadioButton->isChecked()) counts = NandGH->MGV()->getCounts().first;
+        else counts = NorGH->MGV()->getCounts().first;
+
+        QString str(arg1);
+        if (arg1.size() > counts)
+        {
+            str.chop(str.size() - counts);
+        }
+
+            for (int i = 0; i < str.size(); ++i)
+            {
+                if (str[i].digitValue() > 1)
+                {
+                    str.remove(i,1);
+                }
+            }
+
+        ui->BitWordNumber->setText(str);
+
+
+
+    }
+}
+
+void MainWindow::on_StartButton_clicked()
+{
+    if (ui->NOR_NAND_StackedWidget->currentIndex() == 0) //NOR
+    {
+        if (ui->ReadRadioButton->isChecked()) //Read
+        {
+            string read_str = NorGH->ReadInfo(ui->BitWordNumber->text().toInt()-1);
+            QMessageBox::information(0, "Result", read_str.c_str());
+        }
+        else if (ui->WriteRadioButton->isChecked()) //Write
+        {
+            if (NorGH->RecordInfo(ui->BitWordNumber->text().toStdString())) QMessageBox::information(0, "Result", "Ok!");
+            else QMessageBox::information(0, "Result", "Failed!");
+        }
+    }
+    else // NAND
+    {
+
+    }
+}
+
+void MainWindow::on_ResetButton_clicked()
+{
+    if (ui->NORRadioButton->isChecked()) NorGH->Clear();
+    else NandGH->Clear();
 }

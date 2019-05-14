@@ -12,6 +12,9 @@ public:
     void SetWordLine(size_t count);
     void SetBitLine(size_t count);
     void SetCellDepth(size_t value);
+    bool RecordInfo(string word);
+    string ReadInfo(size_t number);
+    void Clear();
     MyGraphicsView *MGV() const;
 };
 

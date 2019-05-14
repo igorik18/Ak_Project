@@ -13,6 +13,7 @@
 #include <iostream>
 #include <map>
 #include <QDebug>
+#include <QMessageBox>
 using namespace std;
 
 #define _N_O_R_ 0
@@ -40,11 +41,13 @@ public:
     vector <QGraphicsItem *> getNandEndBegBlocks();
     vector <QGraphicsItem *> getNandEndMidBlocks();
 
-    // ПУСТО
+
 
     void SetWordLine(size_t count);
     void SetBitLine(size_t count);
     void ChangeCellDepth(size_t value);
+    bool RecordInfo(string word);
+    string ReadInfo(size_t number);
 
     void update();
 
@@ -55,6 +58,10 @@ public:
 
     QTimer *getTimer() const;
 
+    pair<size_t, size_t> getCounts() const;
+
+    void ClearTable();
+
 signals:
 
 
@@ -64,6 +71,7 @@ private:
     map <string, QPixmap> pictures;
     pair <size_t, size_t> _counts;
     QGraphicsScene      *scene;
+    pair <vector <string>, size_t> words_table;
 
     // НОР ГРУППЫ
     QGraphicsItemGroup  *NorBegBlocksGroup;
@@ -77,10 +85,25 @@ private:
     QGraphicsItemGroup  *NandEndBegBlocksGroup;
     QGraphicsItemGroup  *NandEndMidBlocksGroup;
 
+    pair <bool, int> lighting;
+
 
     QTimer              *timer;
     int _type;
+
+    // КАРТИНКИ
     QPixmap NandCellPicture;
+    QPixmap NorCellPicture;
+    QPixmap BABMPicture;
+    QPixmap BIPicture;
+    QPixmap BIOPicture;
+    QPixmap OAOLPicture;
+    QPixmap OAOMPicture;
+    QPixmap OIBPicture;
+    QPixmap OILPicture;
+    QPixmap OIMPicture;
+    QPixmap OUPicture;
+    QPixmap TOIBPicture;
 
     pair <size_t, size_t> _block_size;
 private:
