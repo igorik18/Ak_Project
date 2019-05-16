@@ -109,10 +109,10 @@ void MainWindow::on_BitWordNumber_textEdited(const QString &arg1)
 {
     bool ok;
     int value = arg1.toInt(&ok, 10);
-    if (!ok)
+    if (!ok && ui->ReadRadioButton->isChecked())
     {
         QString str(arg1);
-        str.chop(1);
+        str.chop(1);//
         ui->BitWordNumber->setText(str);
        // ui->BitWordNumber->setText(QString());
     }
@@ -128,10 +128,10 @@ void MainWindow::on_BitWordNumber_textEdited(const QString &arg1)
             if (value > NorGH->MGV()->getCounts().second) ui->BitWordNumber->setText(QString().setNum(NorGH->MGV()->getCounts().second));
         }
     }
-    else if (ui->WriteRadioButton->isChecked() && ok)
+    else if (ui->WriteRadioButton->isChecked())
     {
         size_t counts;
-        if (ui->NANDRadioButton->isChecked()) counts = NandGH->MGV()->getCounts().first;
+        if (ui->NANDRadioButton->isChecked()) counts = NandGH->MGV()->getCounts().first*NandGH->MGV()->getCelldepth_k();
         else counts = NorGH->MGV()->getCounts().first;
 
         QString str(arg1);
@@ -139,7 +139,6 @@ void MainWindow::on_BitWordNumber_textEdited(const QString &arg1)
         {
             str.chop(str.size() - counts);
         }
-
             for (int i = 0; i < str.size(); ++i)
             {
                 if (str[i].digitValue() > 1)
@@ -147,11 +146,7 @@ void MainWindow::on_BitWordNumber_textEdited(const QString &arg1)
                     str.remove(i,1);
                 }
             }
-
         ui->BitWordNumber->setText(str);
-
-
-
     }
 }
 
@@ -172,7 +167,16 @@ void MainWindow::on_StartButton_clicked()
     }
     else // NAND
     {
-
+        if (ui->ReadRadioButton->isChecked()) // Read
+        {
+            string read_str = NandGH->ReadInfo(ui->BitWordNumber->text().toInt()-1);
+            QMessageBox::information(0, "Result", read_str.c_str());
+        }
+        else if (ui->WriteRadioButton->isChecked()) // Write
+        {
+            if (NandGH->RecordInfo(ui->BitWordNumber->text().toStdString())) QMessageBox::information(0, "Result", "Ok!");
+            else QMessageBox::information(0, "Result", "Failed!");
+        }
     }
 }
 

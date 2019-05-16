@@ -28,6 +28,8 @@ MyGraphicsView::MyGraphicsView(int type, QWidget *parent)
     NandEndMidBlocksGroup = new QGraphicsItemGroup();
     NandMidBlocksGroup = new QGraphicsItemGroup();
 
+    _celldepth_k = 1;
+
     if (_type == _N_O_R_)
     {
         scene->addItem(NorBegBlocksGroup);
@@ -47,69 +49,69 @@ MyGraphicsView::MyGraphicsView(int type, QWidget *parent)
     timer = new QTimer();               // Инициализируем Таймер
     timer->setSingleShot(true);
 
-    pictures["BACKGROUND"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/background.jpg");
-    pictures["BABM"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/blue_and_blue_mid.jpg");
-    pictures["BI"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/blue_into.jpg");
-    pictures["BIO"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/blue_into_orrange.jpg");
-    pictures["CELL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/cell.jpg");
-    pictures["OAOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_and_orrange_left.jpg");
-    pictures["OAOM"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_and_orrange_mid.jpg");
-    pictures["OIB"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_into_blue.jpg");
-    pictures["OIM"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_into_mid.jpg");
-    pictures["OIL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_into_left.jpg");
-    pictures["OU"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/orrange_up.jpg");
-    pictures["TOIB"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/two_orrange_into_blue.jpg");
+    pictures["BACKGROUND"] = QPixmap("circuit/background.jpg");
+    pictures["BABM"] = QPixmap("circuit/blue_and_blue_mid.jpg");
+    pictures["BI"] = QPixmap("circuit/blue_into.jpg");
+    pictures["BIO"] = QPixmap("circuit/blue_into_orrange.jpg");
+    pictures["CELL"] = QPixmap("circuit/cell.jpg");
+    pictures["OAOL"] = QPixmap("circuit/orrange_and_orrange_left.jpg");
+    pictures["OAOM"] = QPixmap("circuit/orrange_and_orrange_mid.jpg");
+    pictures["OIB"] = QPixmap("circuit/orrange_into_blue.jpg");
+    pictures["OIM"] = QPixmap("circuit/orrange_into_mid.jpg");
+    pictures["OIL"] = QPixmap("circuit/orrange_into_left.jpg");
+    pictures["OU"] = QPixmap("circuit/orrange_up.jpg");
+    pictures["TOIB"] = QPixmap("circuit/two_orrange_into_blue.jpg");
 
-    pictures["BABML"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/blue_and_blue_mid.jpg");
-    pictures["BIL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/blue_into.jpg");
-    pictures["BIOBL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/blue_into_orrange_bl.jpg");
-    pictures["BIOOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/blue_into_orrange_ol.jpg");
-    pictures["BIOBOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/blue_into_orrange_bol.jpg");
-    pictures["OAOLL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_and_orrange_left.jpg");
-    pictures["OAOML"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_and_orrange_mid.jpg");
-    pictures["OIBBL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_into_blue_bl.jpg");
-    pictures["OIBOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_into_blue_ol.jpg");
-    pictures["OIBBOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_into_blue_bol.jpg");
-    pictures["OILL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_into_left.jpg");
-    pictures["OIML"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_into_mid.jpg");
-    pictures["OUL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/orrange_up.jpg");
-    pictures["TOIBBL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/two_orrange_into_blue_bl.jpg");
-    pictures["TOIBOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/two_orrange_into_blue_ol.jpg");
-    pictures["TOIBBOL"] = QPixmap("C:/Users/Igor/Documents/Arch_Proj/circuit/light_circuit/two_orrange_into_blue_bol.jpg");
+    pictures["BABML"] = QPixmap("circuit/light_circuit/blue_and_blue_mid.jpg");
+    pictures["BIL"] = QPixmap("circuit/light_circuit/blue_into.jpg");
+    pictures["BIOBL"] = QPixmap("circuit/light_circuit/blue_into_orrange_bl.jpg");
+    pictures["BIOOL"] = QPixmap("circuit/light_circuit/blue_into_orrange_ol.jpg");
+    pictures["BIOBOL"] = QPixmap("circuit/light_circuit/blue_into_orrange_bol.jpg");
+    pictures["OAOLL"] = QPixmap("circuit/light_circuit/orrange_and_orrange_left.jpg");
+    pictures["OAOML"] = QPixmap("circuit/light_circuit/orrange_and_orrange_mid.jpg");
+    pictures["OIBBL"] = QPixmap("circuit/light_circuit/orrange_into_blue_bl.jpg");
+    pictures["OIBOL"] = QPixmap("circuit/light_circuit/orrange_into_blue_ol.jpg");
+    pictures["OIBBOL"] = QPixmap("circuit/light_circuit/orrange_into_blue_bol.jpg");
+    pictures["OILL"] = QPixmap("circuit/light_circuit/orrange_into_left.jpg");
+    pictures["OIML"] = QPixmap("circuit/light_circuit/orrange_into_mid.jpg");
+    pictures["OUL"] = QPixmap("circuit/light_circuit/orrange_up.jpg");
+    pictures["TOIBBL"] = QPixmap("circuit/light_circuit/two_orrange_into_blue_bl.jpg");
+    pictures["TOIBOL"] = QPixmap("circuit/light_circuit/two_orrange_into_blue_ol.jpg");
+    pictures["TOIBBOL"] = QPixmap("circuit/light_circuit/two_orrange_into_blue_bol.jpg");
 
-    pictures["CELL_1_0"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_1/CELL_1_0.jpg");
-    pictures["CELL_1_1"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_1/CELL_1_1.jpg");
+    pictures["CELL_1_0"] = QPixmap("circuit/CELL_1/CELL_1_0.jpg");
+    pictures["CELL_1_1"] = QPixmap("circuit/CELL_1/CELL_1_1.jpg");
 
-    pictures["CELL_2_00"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_2/CELL_2_00.jpg");
-    pictures["CELL_2_01"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_2/CELL_2_01.jpg");
-    pictures["CELL_2_10"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_2/CELL_2_10.jpg");
-    pictures["CELL_2_11"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_2/CELL_2_11.jpg");
+    pictures["CELL_2_00"] = QPixmap("circuit/CELL_2/CELL_2_00.jpg");
+    pictures["CELL_2_01"] = QPixmap("circuit/CELL_2/CELL_2_01.jpg");
+    pictures["CELL_2_10"] = QPixmap("circuit/CELL_2/CELL_2_10.jpg");
+    pictures["CELL_2_11"] = QPixmap("circuit/CELL_2/CELL_2_11.jpg");
 
-    pictures["CELL_3_000"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_000.jpg");
-    pictures["CELL_3_001"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_001.jpg");
-    pictures["CELL_3_010"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_010.jpg");
-    pictures["CELL_3_011"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_011.jpg");
-    pictures["CELL_3_100"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_100.jpg");
-    pictures["CELL_3_101"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_101.jpg");
-    pictures["CELL_3_110"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_110.jpg");
-    pictures["CELL_3_111"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_3/CELL_3_111.jpg");
+    pictures["CELL_3_000"] = QPixmap("circuit/CELL_3/CELL_3_000.jpg");
+    pictures["CELL_3_001"] = QPixmap("circuit/CELL_3/CELL_3_001.jpg");
+    pictures["CELL_3_010"] = QPixmap("circuit/CELL_3/CELL_3_010.jpg");
+    pictures["CELL_3_011"] = QPixmap("circuit/CELL_3/CELL_3_011.jpg");
+    pictures["CELL_3_100"] = QPixmap("circuit/CELL_3/CELL_3_100.jpg");
+    pictures["CELL_3_101"] = QPixmap("circuit/CELL_3/CELL_3_101.jpg");
+    pictures["CELL_3_110"] = QPixmap("circuit/CELL_3/CELL_3_110.jpg");
+    pictures["CELL_3_111"] = QPixmap("circuit/CELL_3/CELL_3_111.jpg");
 
-    pictures["CELL_4_0000"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0000.jpg");
-    pictures["CELL_4_0001"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0001.jpg");
-    pictures["CELL_4_0010"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0010.jpg");
-    pictures["CELL_4_0011"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0011.jpg");
-    pictures["CELL_4_0100"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0100.jpg");
-    pictures["CELL_4_0101"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0101.jpg");
-    pictures["CELL_4_0110"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0110.jpg");
-    pictures["CELL_4_0111"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_0111.jpg");
-    pictures["CELL_4_1000"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1000.jpg");
-    pictures["CELL_4_1001"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1001.jpg");
-    pictures["CELL_4_1010"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1010.jpg");
-    pictures["CELL_4_1011"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1011.jpg");
-    pictures["CELL_4_1100"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1100.jpg");
-    pictures["CELL_4_1101"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1101.jpg");
-    pictures["CELL_4_1110"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1110.jpg");
-    pictures["CELL_4_1111"] = QPixmap("C:/Users/Igor/Downloads/CELL_BLOCKS/CELL_BLOCKS/CELL_4/CELL_4_1111.jpg");
+    pictures["CELL_4_0000"] = QPixmap("circuit/CELL_4/CELL_4_0000.jpg");
+    pictures["CELL_4_0001"] = QPixmap("circuit/CELL_4/CELL_4_0001.jpg");
+    pictures["CELL_4_0010"] = QPixmap("circuit/CELL_4/CELL_4_0010.jpg");
+    pictures["CELL_4_0011"] = QPixmap("circuit/CELL_4/CELL_4_0011.jpg");
+    pictures["CELL_4_0100"] = QPixmap("circuit/CELL_4/CELL_4_0100.jpg");
+    pictures["CELL_4_0101"] = QPixmap("circuit/CELL_4/CELL_4_0101.jpg");
+    pictures["CELL_4_0110"] = QPixmap("circuit/CELL_4/CELL_4_0110.jpg");
+    pictures["CELL_4_0111"] = QPixmap("circuit/CELL_4/CELL_4_0111.jpg");
+    pictures["CELL_4_1000"] = QPixmap("circuit/CELL_4/CELL_4_1000.jpg");
+    pictures["CELL_4_1001"] = QPixmap("circuit/CELL_4/CELL_4_1001.jpg");
+    pictures["CELL_4_1010"] = QPixmap("circuit/CELL_4/CELL_4_1010.jpg");
+    pictures["CELL_4_1011"] = QPixmap("circuit/CELL_4/CELL_4_1011.jpg");
+    pictures["CELL_4_1100"] = QPixmap("circuit/CELL_4/CELL_4_1100.jpg");
+    pictures["CELL_4_1101"] = QPixmap("circuit/CELL_4/CELL_4_1101.jpg");
+    pictures["CELL_4_1110"] = QPixmap("circuit/CELL_4/CELL_4_1110.jpg");
+    pictures["CELL_4_1111"] = QPixmap("circuit/CELL_4/CELL_4_1111.jpg");
 
     NandCellPicture = pictures["CELL_1_0"];
     NorCellPicture = pictures["CELL_1_0"];
@@ -147,6 +149,11 @@ void MyGraphicsView::slotAlarmTimer()
     update();
 }
 
+size_t MyGraphicsView::getCelldepth_k() const
+{
+    return _celldepth_k;
+}
+
 pair<size_t, size_t> MyGraphicsView::getCounts() const
 {
     return _counts;
@@ -180,29 +187,18 @@ vector<QGraphicsItem *> MyGraphicsView::getNorBegBlocks()
     int height = this->height();    // определяем высоту нашего виджета
     vector<QGraphicsItem *> NorBegBlockItems;
     if (_counts.first == 0 || _counts.second == 0) return NorBegBlockItems;
-    /*if (lighting.first && lighting.second == 0)
-    {
-        OUPicture = pictures["OUL"];
-        OAOMPicture = pictures["OAOML"];
-        //BIPicture = pictures["BIL"];
-    }
-    else
-    {
-        lighting.first = false;
-        lighting.second = 0;
-        OUPicture = pictures["OU"];
-        OAOMPicture = pictures["OAOM"];
-        //BIPicture = pictures["BI"];
-    }*/
-    if (lighting.first && lighting.second == 0)
+
+    if (write_lighting.first && write_lighting.second == 0)
     {
         OUPicture = pictures["OUL"];
         OAOMPicture = pictures["OAOML"];
     }
+    else if (read_lighting.first && read_lighting.second == 0) BIPicture = pictures["BIL"];
     else
     {
         OUPicture = pictures["OU"];
         OAOMPicture = pictures["OAOM"];
+        BIPicture = pictures["BI"];
     }
     for (size_t i = 0; i < _counts.first-1; i++)
     {
@@ -245,22 +241,28 @@ vector<QGraphicsItem *> MyGraphicsView::getNorMidBlocks()
             if (words_table.first.size() > j &&
                 i == words_table.first[j].find("1", i))
             {
-                 qDebug() << "cell11";
+                 //qDebug() << "cell11";
                  NorCellPicture = pictures["CELL_1_1"];
             }
             else NorCellPicture = pictures["CELL_1_0"];
 
-            if (lighting.first && lighting.second == j)
+            if (write_lighting.first && write_lighting.second == j)
             {
                 OAOMPicture = pictures["OAOML"];
                 BIOPicture = pictures["BIOOL"];
             }
+            else if (read_lighting.first && read_lighting.second <= j)
+            {
+                BIOPicture = pictures["BIO"];
+                if (read_lighting.second != j) BIOPicture = pictures["BIOBL"];
+                BABMPicture = pictures["BABML"];
+            }
             else
             {
-                OAOMPicture = pictures["OAOM"];
                 BIOPicture = pictures["BIO"];
+                BABMPicture = pictures["BABM"];
+                OAOMPicture = pictures["OAOM"];
             }
-
 
             QGraphicsItem *URItem = scene->addPixmap(BIOPicture);
             QGraphicsItem *ULItem = scene->addPixmap(OAOMPicture);
@@ -298,16 +300,18 @@ vector<QGraphicsItem *> MyGraphicsView::getNorEndBegBlocks()
     }
     else NorCellPicture = pictures["CELL_1_0"];
         //}
-    if (lighting.first && lighting.second == 0)
+    if (write_lighting.first && write_lighting.second == 0)
     {
         OUPicture = pictures["OUL"];
         OIMPicture = pictures["OIML"];
     }
+    else if (read_lighting.first && read_lighting.second == 0) BIPicture = pictures["BIL"];
     else
     {
         OUPicture = pictures["OU"];
         OIMPicture = pictures["OIM"];
-    }
+        BIPicture = pictures["BI"];
+    } 
 
     QGraphicsItem *URItem = scene->addPixmap(OUPicture);
     QGraphicsItem *ULItem = scene->addPixmap(OIMPicture);
@@ -341,23 +345,31 @@ vector<QGraphicsItem *> MyGraphicsView::getNorEndMidBlocks()
     vector<QGraphicsItem *> NorEndMidBlockItems;
 
     if (_counts.first == 0 || _counts.second == 0) return NorEndMidBlockItems;
+   // else BIPicture = pictures["BI"];
         for (size_t i = 1; i < _counts.second; i++)
         {
+
             if (words_table.first.size() > i &&
                 _counts.first-1 == words_table.first[i].find("1", _counts.first-1)) NorCellPicture = pictures["CELL_1_1"];
             else NorCellPicture = pictures["CELL_1_0"];
 
-            if (lighting.first && lighting.second == i)
+            if (write_lighting.first && write_lighting.second == i)
             {
                 OIMPicture = pictures["OIML"];
                 BIOPicture = pictures["BIOOL"];
             }
+            else if (read_lighting.first && read_lighting.second <= i)
+            {
+                BIOPicture = pictures["BIO"];
+                if (read_lighting.second != i) BIOPicture = pictures["BIOBL"];
+                BABMPicture = pictures["BABML"];
+            }
             else
             {
-                OIMPicture = pictures["OIM"];
                 BIOPicture = pictures["BIO"];
+                BABMPicture = pictures["BABM"];
+                OIMPicture = pictures["OIM"];
             }
-
 
             QGraphicsItem *URItem = scene->addPixmap(BIOPicture);
             QGraphicsItem *ULItem = scene->addPixmap(OIMPicture);
@@ -390,9 +402,41 @@ vector<QGraphicsItem *> MyGraphicsView::getNandBegBlocks()
     int width = this->width();      // определяем ширину нашего виджета
     int height = this->height();    // определяем высоту нашего виджета
     vector<QGraphicsItem *> NandBegBlockItems;
-    if (_counts.first == 0 || _counts.second == 0) return NandBegBlockItems;
+    if (_counts.first == 0 || _counts.second == 0 || _celldepth_k < 1) return NandBegBlockItems;
     for (size_t i = 0; i < _counts.first-1; i++)
     {
+        //for (size_t k = 0; k < _celldepth_k; k++)
+        //{
+        string str(_celldepth_k, '0');
+        //if (_celldepth_k > 0) str.append(_celldepth_k, '0');
+        if (words_table.first.size() > 0)
+        {
+            size_t pos = words_table.first[0].find("1", i*_celldepth_k);
+            while (pos < (i+1)*_celldepth_k)
+            {
+                str[pos%_celldepth_k] = '1';
+                pos = words_table.first[0].find("1", pos+1);
+            }
+            reverse(str.begin(), str.end());
+            NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+        }
+        else NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+        //}
+        if (write_lighting.first && write_lighting.second == 0)
+        {
+            OUPicture = pictures["OUL"];
+            OAOLPicture = pictures["OAOLL"];
+        }
+       // else if (read_lighting.first && read_lighting.second == 0) BIPicture = pictures["BIL"];
+        else
+        {
+            OUPicture = pictures["OU"];
+            OAOLPicture = pictures["OAOL"];
+        }
+
+
+
+
         QGraphicsItem *URItem = scene->addPixmap(OUPicture);
         QGraphicsItem *ULItem = scene->addPixmap(OAOLPicture);
         QGraphicsItem *DRItem = scene->addPixmap(pictures["BACKGROUND"]);
@@ -417,11 +461,42 @@ vector<QGraphicsItem *> MyGraphicsView::getNandMidBlocks()
     int height = this->height();    // определяем высоту нашего виджета
 
     vector<QGraphicsItem *> NandMidBlockItems;
-    if (_counts.first == 0 || _counts.second == 0) return NandMidBlockItems;
+    if (_counts.first == 0 || _counts.second == 0 || _celldepth_k < 1) return NandMidBlockItems;
     for (size_t i = 0; i < _counts.first-1; i++)
     {
         for (size_t j = 1; j < _counts.second; j++)
         {
+            string str(_celldepth_k, '0');
+            if (words_table.first.size() > j)
+            {
+                size_t pos = words_table.first[j].find("1", i*_celldepth_k);
+                while (pos < (i+1)*_celldepth_k)
+                {
+                    str[pos%_celldepth_k] = '1';
+                    pos = words_table.first[j].find("1", pos+1);
+                }
+                reverse(str.begin(), str.end());
+                NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+            }
+            else NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+
+            if (write_lighting.first && write_lighting.second == j)
+            {
+                OUPicture = pictures["OUL"];
+                TOIBPicture = pictures["TOIBOL"];
+            }
+            else if (read_lighting.first && read_lighting.second <= j)
+            {
+                if (read_lighting.second != j) TOIBPicture = pictures["TOIBBL"];
+                else TOIBPicture = pictures["TOIB"];
+            }
+            else
+            {
+                OUPicture = pictures["OU"];
+                TOIBPicture = pictures["TOIB"];
+            }
+
+
             QGraphicsItem *URItem = scene->addPixmap(OUPicture);
             QGraphicsItem *ULItem = scene->addPixmap(TOIBPicture);
             QGraphicsItem *DRItem = scene->addPixmap(pictures["BACKGROUND"]);
@@ -446,7 +521,33 @@ vector<QGraphicsItem *> MyGraphicsView::getNandEndBegBlocks()
     int width = this->width();      // определяем ширину нашего виджета
     int height = this->height();    // определяем высоту нашего виджета
     vector<QGraphicsItem *> NandEndBegBlockItems;
-    if (_counts.first == 0 || _counts.second == 0) return NandEndBegBlockItems;
+    if (_counts.first == 0 || _counts.second == 0 || _celldepth_k < 1) return NandEndBegBlockItems;
+    string str(_celldepth_k, '0');
+    if (words_table.first.size() > 0)
+    {
+        size_t pos = words_table.first[0].find("1", (_counts.first-1)*_celldepth_k);
+        while (pos < _counts.first*_celldepth_k)
+        {
+            str[pos%_celldepth_k] = '1';
+            pos = words_table.first[0].find("1", pos+1);
+        }
+        reverse(str.begin(), str.end());
+        NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+    }
+    else NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+
+    if (write_lighting.first && write_lighting.second == 0)
+    {
+        OUPicture = pictures["OUL"];
+        OILPicture = pictures["OILL"];
+    }
+    else
+    {
+        OUPicture = pictures["OU"];
+        OILPicture = pictures["OIL"];
+    }
+
+
     QGraphicsItem *URItem = scene->addPixmap(OUPicture);
     QGraphicsItem *ULItem = scene->addPixmap(OILPicture);
     QGraphicsItem *DRItem = scene->addPixmap(pictures["BACKGROUND"]);
@@ -479,9 +580,40 @@ vector<QGraphicsItem *> MyGraphicsView::getNandEndMidBlocks()
     int height = this->height();    // определяем высоту нашего виджета
     vector<QGraphicsItem *> NandEndMidBlockItems;
 
-    if (_counts.first == 0 || _counts.second == 0) return NandEndMidBlockItems;
+    if (_counts.first == 0 || _counts.second == 0 || _celldepth_k < 1) return NandEndMidBlockItems;
         for (size_t i = 1; i < _counts.second; i++)
         {
+            string str(_celldepth_k, '0');
+           //if (_celldepth_k > 0) str.append(_celldepth_k, '0');
+            if (words_table.first.size() > i)
+            {
+                size_t pos = words_table.first[i].find("1", (_counts.first-1)*_celldepth_k);
+                while (pos < _counts.first*_celldepth_k)
+                {
+                    str[pos%_celldepth_k] = '1';
+                    pos = words_table.first[i].find("1", pos+1);
+                }
+                reverse(str.begin(), str.end());
+                NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+            }
+            else NandCellPicture = pictures["CELL_" + QString::number(str.size()).toStdString() + "_" + str];
+
+            if (write_lighting.first && write_lighting.second == i)
+            {
+                OUPicture = pictures["OUL"];
+                OIBPicture = pictures["OIBOL"];
+            }
+            else if (read_lighting.first && read_lighting.second <= i)
+            {
+                if (read_lighting.second != i) OIBPicture = pictures["OIBBL"];
+                else OIBPicture = pictures["OIB"];
+            }
+            else
+            {
+                OUPicture = pictures["OU"];
+                OIBPicture = pictures["OIB"];
+            }
+
             QGraphicsItem *URItem = scene->addPixmap(OUPicture);
             QGraphicsItem *ULItem = scene->addPixmap(OIBPicture);
             QGraphicsItem *DRItem = scene->addPixmap(pictures["BACKGROUND"]);
@@ -523,6 +655,7 @@ void MyGraphicsView::SetBitLine(size_t count)
 
 void MyGraphicsView::ChangeCellDepth(size_t value)
 {
+    _celldepth_k = value;
     switch (value)
     {
         case 1:
@@ -547,15 +680,16 @@ void MyGraphicsView::ChangeCellDepth(size_t value)
         }
     }
     slotAlarmTimer();
+    update();
 }
 
 bool MyGraphicsView::RecordInfo(string word)
 {
     if (words_table.first.size() >= _counts.second) return false;
     words_table.first.push_back(word);
-    lighting.first = true;
-    lighting.second = words_table.first.size()-1; //
-    timer->start(100);
+    write_lighting.first = true;
+    write_lighting.second = words_table.first.size()-1; //
+    timer->start(1000);
     update();
     return true;
 }
@@ -563,6 +697,10 @@ bool MyGraphicsView::RecordInfo(string word)
 string MyGraphicsView::ReadInfo(size_t number)
 {
     if (number >= words_table.first.size()) return string();
+    read_lighting.first = true;
+    read_lighting.second = number;
+    timer->start(1000);
+    update();
     return words_table.first.at(number);
 }
 
@@ -597,7 +735,9 @@ void MyGraphicsView::update()
         vector<QGraphicsItem*> EndMidBlocks = getNorEndMidBlocks();
         for (size_t i = 0; i < EndMidBlocks.size(); i++)
             NorEndMidBlocksGroup->addToGroup(EndMidBlocks.at(i));
-        if (lighting.first) lighting.first = false;
+
+        if (write_lighting.first) write_lighting.first = false;
+        if (read_lighting.first) read_lighting.first = false;
     }
     else if (_type == _N_A_N_D_)
     {
@@ -623,6 +763,8 @@ void MyGraphicsView::update()
         vector<QGraphicsItem*> EndMidBlocks = getNandEndMidBlocks();
         for (size_t i = 0; i < EndMidBlocks.size(); i++)
             NandEndMidBlocksGroup->addToGroup(EndMidBlocks.at(i));
+        if (write_lighting.first) write_lighting.first = false;
+        if (read_lighting.first) read_lighting.first = false;
     }
 }
 

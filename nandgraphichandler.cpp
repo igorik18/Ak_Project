@@ -32,8 +32,8 @@ void NandGraphicHandler::SetCellDepth(size_t value)
 
 bool NandGraphicHandler::RecordInfo(string word)
 {
-    if (word.size() < _MGV->getCounts().first)
-        for (size_t i = word.size(); i < _MGV->getCounts().first; i++) word.push_back('0');
+    if (word.size() < _MGV->getCounts().first*_MGV->getCelldepth_k())
+        for (size_t i = word.size(); i < _MGV->getCounts().first*_MGV->getCelldepth_k(); i++) word.push_back('0');
     return _MGV->RecordInfo(word);
 }
 

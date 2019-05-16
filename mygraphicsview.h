@@ -12,6 +12,7 @@
 #include <cstdio>
 #include <iostream>
 #include <map>
+#include <algorithm>
 #include <QDebug>
 #include <QMessageBox>
 using namespace std;
@@ -62,6 +63,8 @@ public:
 
     void ClearTable();
 
+    size_t getCelldepth_k() const;
+
 signals:
 
 
@@ -85,11 +88,13 @@ private:
     QGraphicsItemGroup  *NandEndBegBlocksGroup;
     QGraphicsItemGroup  *NandEndMidBlocksGroup;
 
-    pair <bool, int> lighting;
+    pair <bool, int> write_lighting;
+    pair <bool, int> read_lighting;
 
 
     QTimer              *timer;
     int _type;
+    size_t _celldepth_k;
 
     // КАРТИНКИ
     QPixmap NandCellPicture;
